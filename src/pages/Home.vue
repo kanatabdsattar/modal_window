@@ -12,6 +12,7 @@
         :product="product"
       />
     </div>
+    <ModalWindow v-show="modalWindow.isShown"/>
   </div>
 </template>
 <script setup lang="ts">
@@ -19,8 +20,14 @@ import { computed } from 'vue';
 import ProductCard from '../components/ProductCard.vue';
 import ProductCardSkeleton from '../components/ProductCardSkeleton.vue';
 import { useProductStore } from '../store/products';
+import ModalWindow from '../components/ModalWindow.vue';
+import { useModalWindowStore } from '../store/modal';
+
+const modalWindow = useModalWindowStore()
 
 const productStore = useProductStore();
 
 const products = computed(() => productStore.list);
 </script>
+<style scoped>
+</style>

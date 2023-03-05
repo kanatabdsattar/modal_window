@@ -81,5 +81,8 @@ export const useCartStore = defineStore({
         delete this.contents[productId];
       }
     },
+    getPurchaseById(id: number){
+      return this.contents[id]
+    }
   },
 });

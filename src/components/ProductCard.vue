@@ -13,7 +13,7 @@
             </h2>
             <p>{{ toCurrency(product.price) }}</p>
             <div class="justify-end card-actions">
-                <button class="btn btn-primary" @click="cartStore.add(product.id)">Add to Cart</button>
+                <button class="btn btn-primary" @click="addCardButton(product.id)">Add to Cart</button>
             </div>
         </div>
     </div>   
@@ -23,10 +23,17 @@
 import { useCartStore } from '../store/cart';
 import type { Product } from '../store/products'
 import { toCurrency } from '../shared/utils'
+import { useModalWindowStore } from '../store/modal';
 
 const cartStore = useCartStore()
+const modalWindow = useModalWindowStore()
 
 defineProps<{
     product: Product
 }>();
+
+const addCardButton = (id: number) => {
+  cartStore.add(id);
+  modalWindow.enableModal(id);
+};
 </script>

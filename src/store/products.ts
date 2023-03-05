@@ -45,5 +45,8 @@ export const useProductStore = defineStore({
         return product.id;
       });
     },
+    getItemById(id: number){
+      return this.items[id];
+    }
   },
 });
